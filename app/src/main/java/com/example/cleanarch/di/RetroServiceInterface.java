@@ -1,4 +1,4 @@
-package com.example.cleanarch.data.network;
+package com.example.cleanarch.di;
 
 import com.example.cleanarch.data.model.LoginRequest;
 import com.example.cleanarch.data.model.LoginSuccessfullResponse;
@@ -9,13 +9,11 @@ import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 
-public interface ApiInterface {
+public interface RetroServiceInterface {
 
     @POST("/api/login")
     Call<LoginSuccessfullResponse> getLoginSuccessfullData(@Body LoginRequest loginRequest);
 
     @GET("/api/users?page=2")
     Call<UserResponse>getUserData();
-
-
 }
