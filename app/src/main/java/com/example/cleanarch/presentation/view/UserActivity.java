@@ -6,6 +6,7 @@ import android.os.Bundle;
 import com.example.cleanarch.R;
 import com.example.cleanarch.data.model.UserResponse;
 import com.example.cleanarch.databinding.ActivityMainBinding;
+import com.example.cleanarch.presentation.MyApplication;
 import com.example.cleanarch.presentation.adapter.UsersAdapter;
 
 import com.example.cleanarch.presentation.util.Utility;
@@ -14,13 +15,18 @@ import com.example.cleanarch.presentation.viewModel.UserViewModel;
 import org.json.JSONException;
 import org.json.JSONObject;
 import java.io.IOException;
+
+import javax.inject.Inject;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 public class UserActivity extends AppCompatActivity {
 
+    @Inject
     UserViewModel userViewModel;
+
     ActivityMainBinding activityMainBinding;
     UsersAdapter adapter;
     @Override
@@ -31,7 +37,7 @@ public class UserActivity extends AppCompatActivity {
     }
     public void init(){
         activityMainBinding= DataBindingUtil.setContentView(this,R.layout.activity_main);
-        userViewModel=new UserViewModel();
+        ((MyApplication)MyApplication.getContext()).getRetrofitComponent().injectUsers(this);
         getData();
     }
     public void getData(){

@@ -1,5 +1,7 @@
 package com.example.cleanarch.di;
 
+import com.example.cleanarch.data.model.LoginRequest;
+
 import javax.inject.Singleton;
 
 import dagger.Module;
